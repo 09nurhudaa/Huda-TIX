@@ -19,6 +19,7 @@
                     <div class="form-group">
                         <label for="name">Nama</label>
                         <input type="text" class="form-control" name="name" value="{{ $user->name }}">
+                        {{-- validasi form --}}
                         @error('name')
                             <span class="text-danger">{{$message}}</span>
                         @enderror
@@ -26,6 +27,7 @@
                     <div class="form-group">
                         <label for="name">Email</label>
                         <input type="email" class="form-control" name="email" value="{{ old('email') ?? $user->email }}">
+                        {{-- validasi form --}}
                         @error('email')
                             <span class="text-danger">{{$message}}</span>
                         @enderror

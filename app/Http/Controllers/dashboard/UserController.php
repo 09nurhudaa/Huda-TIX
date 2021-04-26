@@ -5,6 +5,7 @@ namespace App\Http\Controllers\dashboard;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
+//Panggil Validasi
 use Validator;
 
 class UserController extends Controller
@@ -16,11 +17,11 @@ class UserController extends Controller
      */
     public function index(Request $request, User $users)
     {
+        // Membuat fungsi search atau pencarian
         $q = $request->input('q');
 
         $active = 'Users';
 
-        // Membuat fungsi search atau pencarian
         $users = $users->when($q, function ($query) use ($q) {
             return $query->where('name', 'like', '%' . $q . '%')
                 ->orWhere('email', 'like', '%' . $q . '%');
@@ -75,7 +76,6 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
         $user = USER::find($id);
         $active = 'Users';
 
@@ -91,6 +91,7 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
+        // membuat validasi form
         $user = USER::find($id);
 
         $validator = VALIDATOR::make($request->all(), [
