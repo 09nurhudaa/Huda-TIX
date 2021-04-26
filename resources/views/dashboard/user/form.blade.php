@@ -8,7 +8,9 @@
                     <h3>Users</h3>
                 </div>
                 <div class="col-4 text-right">
-                    <button class="btn btn-sm text secondary" data-toggle="modal" data-target="#deleteModal">Delete</button>
+                    <button class="btn btn-sm text secondary" data-toggle="modal" data-target="#deleteModal">
+                        <i class="fas fa-trash"></i>    
+                    </button>
                 </div>
             </div>
         </div>
@@ -35,6 +37,7 @@
                         @enderror
                     </div>
                     <div class="form-group mb-0">
+                        <button type="button" onclick="window.history.back()" class="btn btn-sm btn-secondary">Cancel</button>
                         <button type="submit" class="btn btn-success btn-sm">Update</button>
                     </div>
                     </form>
@@ -59,7 +62,7 @@
                     <form action="{{  url('dashboard/user/delete/'.$user->id)  }}" method="post">
                         @csrf
                         @method('delete')
-                        <button class="btn btn-sm btn-danger">Delete </button>
+                        <button class="btn btn-sm btn-danger"><i class="fas fa-trash"></i> Delete </button>
                     </form>
                 </div>
             </div>
