@@ -20,11 +20,14 @@ Route::get('/', function () {
 Auth::routes();
 
 // Route::get('/home', 'HomeController@index')->name('home');
+Route::middleware('auth')->group(function () {
 
-Route::get('/dashboard', 'dashboard\DashboardController@index');
 
-// users
-Route::get('/dashboard/users', 'dashboard\UserController@index');
-Route::get('/dashboard/user/edit/{id}', 'dashboard\UserController@edit');
-Route::put('/dashboard/user/update/{id}', 'dashboard\UserController@update');
-Route::delete('/dashboard/user/delete/{id}', 'dashboard\UserController@destroy');
+    Route::get('/dashboard', 'dashboard\DashboardController@index');
+
+    // users
+    Route::get('/dashboard/users', 'dashboard\UserController@index')->name('dashboard.users');
+    Route::get('/dashboard/users/{id}', 'dashboard\UserController@edit')->name('dashboard.users.edit');
+    Route::put('/dashboard/users/{id}', 'dashboard\UserController@update')->name('dashboard.users.update');
+    Route::delete('/dashboard/users/{id}', 'dashboard\UserController@destroy')->name('dashboard.users.delete');
+});
